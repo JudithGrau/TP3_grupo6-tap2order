@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tap2Order · Tu comida a bordo, a un toque de distancia | Grupo 06 – IFTS 29</title>
+  <meta name="description" content="Tap2Order: pedidos de comida en un crucero con entrega en camarote o atención en comedor. Landing page del Grupo 06 (IFTS 29).">
+  <meta name="theme-color" content="#122B48">
+
+  <!-- Tipografías: Poppins (títulos) e Inter (cuerpo) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@500;600;700&display=swap">
+
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <!-- Accesibilidad: enlace para saltar la navegación -->
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+  <!-- ===================== NAVEGACIÓN SUPERIOR FIJA ===================== -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#presentacion" aria-label="Tap2Order, ir al inicio">
+        <span class="brand-badge" aria-hidden="true">T2O</span>
+        <span class="brand-name">Tap2Order</span>
+      </a>
+
+      <nav class="main-nav" aria-label="Navegación principal">
+        <ul class="nav-list">
+          <li><a class="nav-link" href="#presentacion">Presentación</a></li>
+          <li><a class="nav-link" href="#propuestas">Propuestas</a></li>
+          <li><a class="nav-link" href="#diagramas">Diagramas</a></li>
+          <li><a class="nav-link" href="#detalles">Detalles</a></li>
+        </ul>
+      </nav>
+
+      <a class="btn btn-primary" href="#propuestas">Ver soluciones</a>
+    </div>
+  </header>
+
+  <main id="contenido" tabindex="-1">
+
+    <!-- ===================== 1. PRESENTACIÓN ===================== -->
+    <section id="presentacion" class="section section-hero" aria-labelledby="presentacion-titulo" tabindex="-1">
+      <div class="container hero-grid">
+        <div class="hero-text">
+          <p class="eyebrow">Gastronomía y turismo · Grupo 06 – IFTS 29</p>
+          <h1 id="presentacion-titulo" class="hero-title">Tap2Order</h1>
+          <p class="hero-slogan">Tu comida a bordo, a un toque de distancia</p>
+          <p class="hero-description">
+            Tap2Order es una plataforma de pedidos de comida para cruceros. Los pasajeros eligen,
+            piden y siguen su pedido desde el celular, con <strong>entrega en camarote</strong> o
+            <strong>atención en comedor</strong>, mientras la <strong>cocina trabaja sincronizada</strong>
+            con cada solicitud en tiempo real.
+          </p>
+
+          <ul class="service-list" aria-label="Modalidades del servicio">
+            <li class="service-item">
+              <span class="service-dot dot-orange" aria-hidden="true"></span>
+              Entrega en camarote
+            </li>
+            <li class="service-item">
+              <span class="service-dot dot-teal" aria-hidden="true"></span>
+              Atención en comedor
+            </li>
+            <li class="service-item">
+              <span class="service-dot dot-navy" aria-hidden="true"></span>
+              Cocina sincronizada
+            </li>
+          </ul>
+
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#propuestas">Ver soluciones</a>
+            <a class="btn btn-ghost" href="#detalles">Ver detalles</a>
+          </div>
+        </div>
+
+        <!-- Tarjeta del logotipo oficial con respaldo automático -->
+        <figure class="logo-card">
+          <div class="logo-frame">
+            <img
+              id="logo-oficial"
+              class="logo-img"
+              src="img/logo-tap2order.webp"
+              alt="Logotipo oficial de Tap2Order"
+              width="480" height="480"
+              decoding="async"
+              fetchpriority="high">
+            <div class="logo-fallback" aria-hidden="true">
+              <span class="logo-fallback-badge">T2O</span>
+              <span class="logo-fallback-name">Tap2Order</span>
+            </div>
+          </div>
+          <figcaption class="logo-caption">Logotipo oficial de Tap2Order</figcaption>
+        </figure>
+      </div>
+
+      <!-- Objetivos -->
+      <div class="container">
+        <h2 class="section-title">Objetivo del proyecto</h2>
+        <ul class="cards-grid cards-3">
+          <li class="card card-accent-orange">
+            <h3 class="card-title">Pedidos ágiles</h3>
+            <p>Que cada pasajero pueda pedir su comida desde cualquier lugar del barco en pocos toques.</p>
+          </li>
+          <li class="card card-accent-teal">
+            <h3 class="card-title">Doble modalidad</h3>
+            <p>Ofrecer entrega en camarote o atención en comedor según la preferencia del pasajero.</p>
+          </li>
+          <li class="card card-accent-navy">
+            <h3 class="card-title">Cocina conectada</h3>
+            <p>Sincronizar la cocina con los pedidos para reducir esperas y mejorar la organización a bordo.</p>
+          </li>
+        </ul>
+
+        <!-- Reconocimiento al origen del proyecto -->
+        <aside class="highlight" aria-labelledby="origen-titulo">
+          <h2 id="origen-titulo" class="highlight-title">Origen del proyecto</h2>
+          <p>
+            Tap2Order fue creada originalmente por estudiantes del <strong>IFTS 16</strong>.
+            Reconocemos su trabajo como punto de partida: el <strong>Grupo 06 del IFTS 29</strong>
+            retoma esa idea para desarrollar y documentar esta landing page.
+          </p>
+        </aside>
+      </div>
+    </section>
+
+    <!-- ===================== 2. PROPUESTAS (estructura base) ===================== -->
+    <section id="propuestas" class="section section-alt" aria-labelledby="propuestas-titulo" tabindex="-1">
+      <div class="container">
+        <p class="eyebrow">Etapa siguiente</p>
+        <h2 id="propuestas-titulo" class="section-title">Propuestas de solución</h2>
+        <p class="section-lead">Espacio reservado para las propuestas que el equipo definirá en las próximas etapas.</p>
+
+        <ul class="cards-grid cards-2" data-stage="pendiente">
+          <li class="card card-placeholder">
+            <h3 class="card-title">Propuesta R3</h3>
+            <p class="placeholder-text">Contenido pendiente de definición.</p>
+          </li>
+          <li class="card card-placeholder">
+            <h3 class="card-title">Propuesta R4</h3>
+            <p class="placeholder-text">Contenido pendiente de definición.</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ===================== 3. DIAGRAMAS (estructura base) ===================== -->
+    <section id="diagramas" class="section" aria-labelledby="diagramas-titulo" tabindex="-1">
+      <div class="container">
+        <p class="eyebrow">Etapa siguiente</p>
+        <h2 id="diagramas-titulo" class="section-title">Diagramas</h2>
+        <p class="section-lead">Espacio reservado para los diagramas del proceso que se incorporarán en las próximas etapas.</p>
+
+        <div class="cards-grid cards-2" data-stage="pendiente">
+          <figure class="diagram-slot">
+            <div class="diagram-placeholder" aria-hidden="true">Diagrama R3</div>
+            <figcaption>Diagrama R3 · pendiente</figcaption>
+          </figure>
+          <figure class="diagram-slot">
+            <div class="diagram-placeholder" aria-hidden="true">Diagrama R4</div>
+            <figcaption>Diagrama R4 · pendiente</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== 4. DETALLES (paneles desplegables) ===================== -->
+    <section id="detalles" class="section section-alt" aria-labelledby="detalles-titulo" tabindex="-1">
+      <div class="container">
+        <p class="eyebrow">Información ampliada</p>
+        <h2 id="detalles-titulo" class="section-title">Detalles de R3 y R4</h2>
+        <p class="section-lead">Datos utilizados, excepciones e intervención humana de cada propuesta.</p>
+
+        <div class="details-toolbar" role="group" aria-label="Controles de los paneles">
+          <button type="button" class="btn btn-secondary" data-details-action="expand">Expandir todo</button>
+          <button type="button" class="btn btn-ghost" data-details-action="collapse">Contraer todo</button>
+          <p class="visually-hidden" id="details-status" aria-live="polite"></p>
+        </div>
+
+        <div class="details-columns">
+          <!-- Columna R3 -->
+          <div class="accordion" role="group" aria-labelledby="r3-titulo">
+            <h3 id="r3-titulo" class="column-title"><span class="tag tag-orange">R3</span> Propuesta R3</h3>
+            <details class="panel">
+              <summary>Datos utilizados</summary>
+              <div class="panel-body"><p class="placeholder-text">Contenido pendiente de definición.</p></div>
+            </details>
+            <details class="panel">
+              <summary>Excepciones</summary>
+              <div class="panel-body"><p class="placeholder-text">Contenido pendiente de definición.</p></div>
+            </details>
+            <details class="panel">
+              <summary>Intervención humana</summary>
+              <div class="panel-body"><p class="placeholder-text">Contenido pendiente de definición.</p></div>
+            </details>
+          </div>
+
+          <!-- Columna R4 -->
+          <div class="accordion" role="group" aria-labelledby="r4-titulo">
+            <h3 id="r4-titulo" class="column-title"><span class="tag tag-teal">R4</span> Propuesta R4</h3>
+            <details class="panel">
+              <summary>Datos utilizados</summary>
+              <div class="panel-body"><p class="placeholder-text">Contenido pendiente de definición.</p></div>
+            </details>
+            <details class="panel">
+              <summary>Excepciones</summary>
+              <div class="panel-body"><p class="placeholder-text">Contenido pendiente de definición.</p></div>
+            </details>
+            <details class="panel">
+              <summary>Intervención humana</summary>
+              <div class="panel-body"><p class="placeholder-text">Contenido pendiente de definición.</p></div>
+            </details>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p><strong>Tap2Order</strong> · Landing page del Grupo 06 – IFTS 29</p>
+      <p>Proyecto original creado por estudiantes del IFTS 16.</p>
+    </div>
+  </footer>
+</body>
+</html>
