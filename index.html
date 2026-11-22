@@ -127,23 +127,131 @@
       </div>
     </section>
 
-    <!-- ===================== 2. PROPUESTAS (estructura base) ===================== -->
+    <!-- ===================== 2. PROPUESTAS ===================== -->
     <section id="propuestas" class="section section-alt" aria-labelledby="propuestas-titulo" tabindex="-1">
       <div class="container">
-        <p class="eyebrow">Etapa siguiente</p>
-        <h2 id="propuestas-titulo" class="section-title">Propuestas de solución</h2>
-        <p class="section-lead">Espacio reservado para las propuestas que el equipo definirá en las próximas etapas.</p>
+        <p class="eyebrow">Bloque: Confirmación y cocina</p>
+        <h2 id="propuestas-titulo" class="section-title">Nuestras propuestas</h2>
+        <p class="section-lead">
+          Propuestas agénticas para las reglas <strong>R3</strong> y <strong>R4</strong>, diferenciando lo que exige
+          la sentencia original de las decisiones de diseño que aportan claridad operativa a bordo.
+        </p>
 
-        <ul class="cards-grid cards-2" data-stage="pendiente">
-          <li class="card card-placeholder">
-            <h3 class="card-title">Propuesta R3</h3>
-            <p class="placeholder-text">Contenido pendiente de definición.</p>
-          </li>
-          <li class="card card-placeholder">
-            <h3 class="card-title">Propuesta R4</h3>
-            <p class="placeholder-text">Contenido pendiente de definición.</p>
-          </li>
-        </ul>
+        <div class="cards-grid cards-2 proposals-grid">
+          <!-- Propuesta 1 · R3 -->
+          <article class="card card-accent-orange proposal-card" aria-labelledby="propuesta-r3-titulo">
+            <header class="proposal-header">
+              <span class="tag tag-orange">Regla R3</span>
+              <h3 id="propuesta-r3-titulo" class="card-title">Envío y recepción confirmada por cocina</h3>
+            </header>
+
+            <blockquote class="rule-quote rule-quote-orange">
+              <span class="rule-quote-label">Sentencia original</span>
+              <p>
+                "Si el pedido está en edición, completo, conserva productos disponibles y el pasajero confirma el envío,
+                el sistema solicita enviarlo a cocina y lo marca como envío pendiente; solo lo registra como recibido por
+                cocina cuando esta confirma la recepción de esa misma versión."
+              </p>
+            </blockquote>
+
+            <div class="state-flow" aria-label="Secuencia de estados de R3">
+              <span class="state-pill">En edición</span>
+              <span class="state-arrow" aria-hidden="true">-&gt;</span>
+              <span class="state-pill state-pill-orange">Envío pendiente</span>
+              <span class="state-arrow" aria-hidden="true">-&gt;</span>
+              <span class="state-pill state-pill-navy">Recibido por cocina</span>
+            </div>
+
+            <div class="proposal-split">
+              <div class="split-block split-rule">
+                <h4>Qué proviene de la regla</h4>
+                <p>
+                  La transición en dos pasos: primero pasa a <em>envío pendiente</em> tras confirmar el pasajero, y
+                  recién queda <em>recibido por cocina</em> cuando cocina valida esa misma versión <code>N</code>.
+                </p>
+              </div>
+              <div class="split-block split-design">
+                <h4>Qué aporta el diseño</h4>
+                <p>
+                  Identificador explícito de versión <code>N</code>, bloqueo preventivo ante falta de stock o datos
+                  incompletos, y alertas visuales de reintento si cocina demora en acusar recibo.
+                </p>
+              </div>
+            </div>
+
+            <div class="key-points">
+              <h4>Puntos clave</h4>
+              <ul class="bullet-list">
+                <li><strong>Pedido completo:</strong> modalidad (camarote o comedor), ítems y datos obligatorios cargados.</li>
+                <li><strong>Productos disponibles:</strong> verificación de stock vigente antes de solicitar el envío.</li>
+                <li><strong>Confirmación del pasajero:</strong> acción explícita que dispara el estado <em>envío pendiente</em>.</li>
+                <li><strong>Confirmación de cocina sobre versión N:</strong> solo esa versión exacta habilita <em>recibido por cocina</em>.</li>
+              </ul>
+            </div>
+
+            <footer class="proposal-actions">
+              <a class="btn btn-primary" href="#diagrama-r3">Ver diagrama R3</a>
+              <a class="btn btn-ghost" href="#detalles-r3">Ver detalles R3</a>
+            </footer>
+          </article>
+
+          <!-- Propuesta 2 · R4 -->
+          <article class="card card-accent-teal proposal-card" aria-labelledby="propuesta-r4-titulo">
+            <header class="proposal-header">
+              <span class="tag tag-teal">Regla R4</span>
+              <h3 id="propuesta-r4-titulo" class="card-title">Pedido "listo" informado por cocina</h3>
+            </header>
+
+            <blockquote class="rule-quote rule-quote-teal">
+              <span class="rule-quote-label">Sentencia original</span>
+              <p>
+                "Si cocina informa que la versión vigente de un pedido recibido está lista y no hay una modificación
+                pendiente, el sistema cambia su estado a listo; la confirmación del pasajero por sí sola no produce ese
+                cambio."
+              </p>
+            </blockquote>
+
+            <div class="state-flow" aria-label="Secuencia de estados de R4">
+              <span class="state-pill">Recibido por cocina</span>
+              <span class="state-arrow" aria-hidden="true">-&gt;</span>
+              <span class="state-pill state-pill-muted">En preparación (diseño)</span>
+              <span class="state-arrow" aria-hidden="true">-&gt;</span>
+              <span class="state-pill state-pill-teal">Listo</span>
+            </div>
+
+            <div class="proposal-split">
+              <div class="split-block split-rule">
+                <h4>Qué proviene de la regla</h4>
+                <p>
+                  Solo el aviso de cocina sobre la versión vigente recibida, sin modificaciones pendientes, cambia el
+                  estado a <em>listo</em>; el pasajero no puede forzarlo por su cuenta.
+                </p>
+              </div>
+              <div class="split-block split-design">
+                <h4>Qué aporta el diseño</h4>
+                <p>
+                  Estado intermedio visual <em>En preparación</em> para dar feedback al pasajero mientras cocina trabaja,
+                  validación estricta de versión vigente sin cambios en curso y notificación final a sala o camarote.
+                </p>
+              </div>
+            </div>
+
+            <div class="key-points">
+              <h4>Puntos clave</h4>
+              <ul class="bullet-list">
+                <li><strong>Aviso de cocina:</strong> origen obligatorio para habilitar la transición a <em>listo</em>.</li>
+                <li><strong>Versión vigente:</strong> el aviso debe corresponder al último pedido recibido y activo.</li>
+                <li><strong>Sin modificación pendiente:</strong> si hay cambios en curso, el estado no avanza a <em>listo</em>.</li>
+                <li><strong>Bloqueo al pasajero:</strong> la confirmación unilateral del pasajero no produce el cambio de estado.</li>
+              </ul>
+            </div>
+
+            <footer class="proposal-actions">
+              <a class="btn btn-secondary" href="#diagrama-r4">Ver diagrama R4</a>
+              <a class="btn btn-ghost" href="#detalles-r4">Ver detalles R4</a>
+            </footer>
+          </article>
+        </div>
       </div>
     </section>
 
@@ -155,11 +263,11 @@
         <p class="section-lead">Espacio reservado para los diagramas del proceso que se incorporarán en las próximas etapas.</p>
 
         <div class="cards-grid cards-2" data-stage="pendiente">
-          <figure class="diagram-slot">
+          <figure id="diagrama-r3" class="diagram-slot" tabindex="-1">
             <div class="diagram-placeholder" aria-hidden="true">Diagrama R3</div>
             <figcaption>Diagrama R3 · pendiente</figcaption>
           </figure>
-          <figure class="diagram-slot">
+          <figure id="diagrama-r4" class="diagram-slot" tabindex="-1">
             <div class="diagram-placeholder" aria-hidden="true">Diagrama R4</div>
             <figcaption>Diagrama R4 · pendiente</figcaption>
           </figure>
@@ -172,7 +280,10 @@
       <div class="container">
         <p class="eyebrow">Información ampliada</p>
         <h2 id="detalles-titulo" class="section-title">Detalles de R3 y R4</h2>
-        <p class="section-lead">Datos utilizados, excepciones e intervención humana de cada propuesta.</p>
+        <p class="section-lead">
+          Datos utilizados, excepciones e intervención humana de cada propuesta, distinguiendo lo que establece la
+          sentencia original de las decisiones de diseño agregadas.
+        </p>
 
         <div class="details-toolbar" role="group" aria-label="Controles de los paneles">
           <button type="button" class="btn btn-secondary" data-details-action="expand">Expandir todo</button>
@@ -182,36 +293,126 @@
 
         <div class="details-columns">
           <!-- Columna R3 -->
-          <div class="accordion" role="group" aria-labelledby="r3-titulo">
-            <h3 id="r3-titulo" class="column-title"><span class="tag tag-orange">R3</span> Propuesta R3</h3>
+          <div id="detalles-r3" class="accordion" role="group" aria-labelledby="r3-titulo" tabindex="-1">
+            <h3 id="r3-titulo" class="column-title"><span class="tag tag-orange">R3</span> Propuesta R3 · Envío a cocina</h3>
             <details class="panel">
               <summary>Datos utilizados</summary>
-              <div class="panel-body"><p class="placeholder-text">Contenido pendiente de definición.</p></div>
+              <div class="panel-body">
+                <div class="detail-group">
+                  <span class="origin-badge origin-rule">De la sentencia</span>
+                  <ul class="bullet-list">
+                    <li>Estado actual del pedido (<em>en edición</em>, <em>envío pendiente</em> o <em>recibido por cocina</em>).</li>
+                    <li>Completitud del pedido y disponibilidad de todos sus productos.</li>
+                    <li>Confirmación de envío del pasajero y confirmación de recepción de cocina.</li>
+                    <li>Número o identificador de versión del pedido enviada y confirmada.</li>
+                  </ul>
+                </div>
+                <div class="detail-group">
+                  <span class="origin-badge origin-design">Aporte de diseño</span>
+                  <ul class="bullet-list">
+                    <li>Modalidad de entrega (camarote o mesa en comedor) y marca temporal de envío.</li>
+                    <li>Registro de versión <code>N</code> para evitar cruces ante ediciones rápidas del pasajero.</li>
+                  </ul>
+                </div>
+              </div>
             </details>
             <details class="panel">
               <summary>Excepciones</summary>
-              <div class="panel-body"><p class="placeholder-text">Contenido pendiente de definición.</p></div>
+              <div class="panel-body">
+                <div class="detail-group">
+                  <span class="origin-badge origin-rule">De la sentencia</span>
+                  <ul class="bullet-list">
+                    <li>Pedido incompleto o con productos sin disponibilidad: no avanza a <em>envío pendiente</em>.</li>
+                    <li>Cocina confirma otra versión distinta a la enviada: no se registra como <em>recibido por cocina</em>.</li>
+                  </ul>
+                </div>
+                <div class="detail-group">
+                  <span class="origin-badge origin-design">Aporte de diseño</span>
+                  <ul class="bullet-list">
+                    <li>Falla de conexión a bordo o demora sin acuse de cocina: el pedido permanece en <em>envío pendiente</em> y dispara reintentos automáticos más alerta visual.</li>
+                    <li>Aviso específico al pasajero indicando qué producto perdió stock para que ajuste su pedido.</li>
+                  </ul>
+                </div>
+              </div>
             </details>
             <details class="panel">
               <summary>Intervención humana</summary>
-              <div class="panel-body"><p class="placeholder-text">Contenido pendiente de definición.</p></div>
+              <div class="panel-body">
+                <div class="detail-group">
+                  <span class="origin-badge origin-rule">De la sentencia</span>
+                  <ul class="bullet-list">
+                    <li><strong>Pasajero:</strong> revisa el pedido y ejecuta la confirmación explícita de envío.</li>
+                    <li><strong>Personal de cocina:</strong> verifica y confirma la recepción de esa misma versión del pedido.</li>
+                  </ul>
+                </div>
+                <div class="detail-group">
+                  <span class="origin-badge origin-design">Aporte de diseño</span>
+                  <ul class="bullet-list">
+                    <li><strong>Personal de cocina / sala:</strong> ante alertas por demora prolongada en <em>envío pendiente</em> o falta de stock sobre la hora, interviene para validar o asistir al pasajero.</li>
+                  </ul>
+                </div>
+              </div>
             </details>
           </div>
 
           <!-- Columna R4 -->
-          <div class="accordion" role="group" aria-labelledby="r4-titulo">
-            <h3 id="r4-titulo" class="column-title"><span class="tag tag-teal">R4</span> Propuesta R4</h3>
+          <div id="detalles-r4" class="accordion" role="group" aria-labelledby="r4-titulo" tabindex="-1">
+            <h3 id="r4-titulo" class="column-title"><span class="tag tag-teal">R4</span> Propuesta R4 · Pedido listo</h3>
             <details class="panel">
               <summary>Datos utilizados</summary>
-              <div class="panel-body"><p class="placeholder-text">Contenido pendiente de definición.</p></div>
+              <div class="panel-body">
+                <div class="detail-group">
+                  <span class="origin-badge origin-rule">De la sentencia</span>
+                  <ul class="bullet-list">
+                    <li>Aviso de pedido <em>listo</em> emitido por cocina (y origen del emisor para bloquear al pasajero).</li>
+                    <li>Versión vigente del pedido previamente marcado como <em>recibido por cocina</em>.</li>
+                    <li>Indicador booleano de existencia de modificación pendiente.</li>
+                  </ul>
+                </div>
+                <div class="detail-group">
+                  <span class="origin-badge origin-design">Aporte de diseño</span>
+                  <ul class="bullet-list">
+                    <li>Estado intermedio visual <em>En preparación</em> para informar progreso sin alterar la regla.</li>
+                    <li>Destino de entrega (camarote o comedor) para dirigir la notificación de despacho.</li>
+                  </ul>
+                </div>
+              </div>
             </details>
             <details class="panel">
               <summary>Excepciones</summary>
-              <div class="panel-body"><p class="placeholder-text">Contenido pendiente de definición.</p></div>
+              <div class="panel-body">
+                <div class="detail-group">
+                  <span class="origin-badge origin-rule">De la sentencia</span>
+                  <ul class="bullet-list">
+                    <li>Intento de confirmación unilateral del pasajero: el sistema bloquea el cambio a <em>listo</em>.</li>
+                    <li>Existe una modificación pendiente o el aviso refiere a una versión desactualizada: se mantiene el estado actual.</li>
+                  </ul>
+                </div>
+                <div class="detail-group">
+                  <span class="origin-badge origin-design">Aporte de diseño</span>
+                  <ul class="bullet-list">
+                    <li>Desincronización de versiones entre pantalla de cocina y pasajero: alerta de versión desactualizada para que cocina procese la versión vigente antes de cerrar.</li>
+                  </ul>
+                </div>
+              </div>
             </details>
             <details class="panel">
               <summary>Intervención humana</summary>
-              <div class="panel-body"><p class="placeholder-text">Contenido pendiente de definición.</p></div>
+              <div class="panel-body">
+                <div class="detail-group">
+                  <span class="origin-badge origin-rule">De la sentencia</span>
+                  <ul class="bullet-list">
+                    <li><strong>Personal de cocina:</strong> único rol autorizado para informar que la versión vigente está lista.</li>
+                    <li><strong>Pasajero:</strong> no puede marcar el pedido como listo por sí solo; recibe el resultado final.</li>
+                  </ul>
+                </div>
+                <div class="detail-group">
+                  <span class="origin-badge origin-design">Aporte de diseño</span>
+                  <ul class="bullet-list">
+                    <li><strong>Personal de sala / camarote:</strong> recibe la notificación cuando pasa a <em>listo</em> para coordinar la entrega al pasajero, o gestiona manualmente si hubo una modificación de último momento.</li>
+                  </ul>
+                </div>
+              </div>
             </details>
           </div>
         </div>
