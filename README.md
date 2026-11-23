@@ -126,4 +126,3 @@ Abrir directamente el archivo `index.html` en cualquier navegador web moderno o 
 
 ## 6. Enlaces públicos
 - **Repositorio:** https://github.com/JudithGrau/TP3_grupo6-tap2order
-- **Comprobación en modo incógnito:** [PENDIENTE: Fecha y resultado de la comprobación en ventana de incógnito]
