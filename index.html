@@ -255,22 +255,340 @@
       </div>
     </section>
 
-    <!-- ===================== 3. DIAGRAMAS (estructura base) ===================== -->
+    <!-- ===================== 3. DIAGRAMAS (flujos interactivos) ===================== -->
     <section id="diagramas" class="section" aria-labelledby="diagramas-titulo" tabindex="-1">
       <div class="container">
-        <p class="eyebrow">Etapa siguiente</p>
-        <h2 id="diagramas-titulo" class="section-title">Diagramas</h2>
-        <p class="section-lead">Espacio reservado para los diagramas del proceso que se incorporarán en las próximas etapas.</p>
+        <p class="eyebrow">Etapa 3 · Modelado interactivo</p>
+        <h2 id="diagramas-titulo" class="section-title">Diagramas de flujo</h2>
+        <p class="section-lead">
+          Representación gráfica y simulación paso a paso de las reglas <strong>R3</strong> y <strong>R4</strong>.
+          Explora interactivamente el camino exitoso (<strong>Sí</strong>) o las excepciones de control (<strong>No</strong>)
+          para comprender la lógica operativa de Tap2Order a bordo.
+        </p>
 
-        <div class="cards-grid cards-2" data-stage="pendiente">
-          <figure id="diagrama-r3" class="diagram-slot" tabindex="-1">
-            <div class="diagram-placeholder" aria-hidden="true">Diagrama R3</div>
-            <figcaption>Diagrama R3 · pendiente</figcaption>
-          </figure>
-          <figure id="diagrama-r4" class="diagram-slot" tabindex="-1">
-            <div class="diagram-placeholder" aria-hidden="true">Diagrama R4</div>
-            <figcaption>Diagrama R4 · pendiente</figcaption>
-          </figure>
+        <!-- Leyenda visual de formas de diagramas -->
+        <div class="diagram-legend" role="region" aria-label="Leyenda de formas de diagramas de flujo">
+          <h3 class="diagram-legend-title">Leyenda de formas</h3>
+          <ul class="diagram-legend-grid">
+            <li class="legend-item">
+              <span class="legend-shape shape-parallelogram" aria-hidden="true">Entrada</span>
+              <div class="legend-info">
+                <span class="legend-name">Datos de entrada</span>
+                <span class="legend-spec">Paralelogramo marino (#122B48)</span>
+              </div>
+            </li>
+            <li class="legend-item">
+              <span class="legend-shape shape-diamond" aria-hidden="true">¿?</span>
+              <div class="legend-info">
+                <span class="legend-name">Condición / Decisión</span>
+                <span class="legend-spec">Rombo naranja (#FF8C32) / turquesa (#2A9D8F)</span>
+              </div>
+            </li>
+            <li class="legend-item">
+              <span class="legend-shape shape-rectangle" aria-hidden="true">Acción</span>
+              <div class="legend-info">
+                <span class="legend-name">Acción del sistema</span>
+                <span class="legend-spec">Rectángulo de proceso</span>
+              </div>
+            </li>
+            <li class="legend-item">
+              <span class="legend-shape shape-pill" aria-hidden="true">Fin</span>
+              <div class="legend-info">
+                <span class="legend-name">Resultado final</span>
+                <span class="legend-spec">Píldora redondeada</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Dos columnas paralelas de diagramas -->
+        <div class="diagrams-grid">
+
+          <!-- ==================== DIAGRAMA R3 (Acento naranja) ==================== -->
+          <article id="diagrama-r3" class="diagram-card diagram-r3" tabindex="-1" aria-labelledby="r3-diagrama-titulo">
+            <header class="diagram-card-header">
+              <div class="diagram-card-meta">
+                <span class="tag tag-orange">Regla R3</span>
+                <h3 id="r3-diagrama-titulo" class="card-title">Envío y recepción en cocina</h3>
+              </div>
+              <p class="diagram-card-desc">
+                Valida completitud y stock antes de pasar a <em>envío pendiente</em>, y espera la confirmación de cocina sobre la versión <code>N</code>.
+              </p>
+
+              <!-- Controles de simulación R3 -->
+              <div class="diagram-controls" role="toolbar" aria-label="Controles de simulación R3">
+                <button type="button" class="btn btn-diagram btn-diagram-yes" data-diagram="r3" data-sim="yes" aria-pressed="false">
+                  <span class="btn-bullet" aria-hidden="true">✓</span> Simular camino Sí
+                </button>
+                <button type="button" class="btn btn-diagram btn-diagram-no" data-diagram="r3" data-sim="no" aria-pressed="false">
+                  <span class="btn-bullet" aria-hidden="true">✕</span> Simular camino No
+                </button>
+                <button type="button" class="btn btn-diagram btn-ghost" data-diagram="r3" data-sim="reset" aria-pressed="false">
+                  <span class="btn-bullet" aria-hidden="true">↺</span> Reiniciar
+                </button>
+              </div>
+
+              <!-- Barra de estado accesible y región aria-live -->
+              <div class="diagram-status" id="r3-status-bar" aria-hidden="true">
+                <span class="status-dot"></span>
+                <span class="status-msg">Selecciona una simulación para recorrer los pasos.</span>
+              </div>
+              <p id="r3-live" class="visually-hidden" aria-live="polite" aria-atomic="true"></p>
+            </header>
+
+            <!-- Lienzo del diagrama de flujo R3 -->
+            <div class="flow-canvas" id="canvas-r3" role="img" aria-label="Diagrama de flujo interactivo para la regla R3">
+
+              <!-- Paso 1: Entrada -->
+              <div class="flow-row flow-row-center">
+                <div class="flow-node flow-node-parallelogram" data-node="r3-in">
+                  <span class="node-kicker">Entrada</span>
+                  <p class="node-text">Pedido en edición (versión N) con confirmación de envío del pasajero.</p>
+                </div>
+              </div>
+
+              <!-- Conector hacia Condición 1 -->
+              <div class="flow-connector-v" data-path="r3-path-1" aria-hidden="true">
+                <span class="arrow-line"></span>
+                <span class="arrow-head">▼</span>
+              </div>
+
+              <!-- Paso 2: Condición 1 con bifurcación Sí / No -->
+              <div class="flow-branch-row">
+                <!-- Tronco: Condición 1 -->
+                <div class="flow-node flow-node-diamond" data-node="r3-c1">
+                  <svg class="diamond-svg" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+                    <polygon points="50,3 97,50 50,97 3,50" />
+                  </svg>
+                  <div class="diamond-body">
+                    <span class="node-kicker">Condición 1</span>
+                    <p class="node-text">¿El pedido está completo y conserva productos disponibles?</p>
+                  </div>
+                </div>
+
+                <!-- Rama lateral No -->
+                <div class="flow-side-branch">
+                  <div class="flow-connector-h" data-path="r3-path-c1-no" aria-hidden="true">
+                    <span class="branch-pill branch-pill-no">No</span>
+                    <span class="arrow-line-h"></span>
+                    <span class="arrow-head-h">▶</span>
+                  </div>
+                  <div class="flow-node flow-node-alt" data-node="r3-c1-no">
+                    <span class="node-kicker kicker-danger">Excepción</span>
+                    <p class="node-text">Permanece <em>"en edición"</em> y se indican datos o stock faltantes.</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Conector vertical Sí hacia Acción -->
+              <div class="flow-connector-v has-label" data-path="r3-path-c1-yes" aria-hidden="true">
+                <span class="branch-pill branch-pill-yes">Sí</span>
+                <span class="arrow-line"></span>
+                <span class="arrow-head">▼</span>
+              </div>
+
+              <!-- Paso 3: Acción -->
+              <div class="flow-row flow-row-center">
+                <div class="flow-node flow-node-rect" data-node="r3-act">
+                  <span class="node-kicker kicker-orange">Acción</span>
+                  <p class="node-text">Estado &rarr; <strong>"envío pendiente"</strong>; se envía la versión N a cocina.</p>
+                </div>
+              </div>
+
+              <!-- Conector hacia Condición 2 -->
+              <div class="flow-connector-v" data-path="r3-path-2" aria-hidden="true">
+                <span class="arrow-line"></span>
+                <span class="arrow-head">▼</span>
+              </div>
+
+              <!-- Paso 4: Condición 2 con bifurcación Sí / No -->
+              <div class="flow-branch-row">
+                <!-- Tronco: Condición 2 -->
+                <div class="flow-node flow-node-diamond" data-node="r3-c2">
+                  <svg class="diamond-svg" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+                    <polygon points="50,3 97,50 50,97 3,50" />
+                  </svg>
+                  <div class="diamond-body">
+                    <span class="node-kicker">Condición 2</span>
+                    <p class="node-text">¿Cocina confirma recepción de la versión N?</p>
+                  </div>
+                </div>
+
+                <!-- Rama lateral No -->
+                <div class="flow-side-branch">
+                  <div class="flow-connector-h" data-path="r3-path-c2-no" aria-hidden="true">
+                    <span class="branch-pill branch-pill-no">No</span>
+                    <span class="arrow-line-h"></span>
+                    <span class="arrow-head-h">▶</span>
+                  </div>
+                  <div class="flow-node flow-node-alt" data-node="r3-c2-no">
+                    <span class="node-kicker kicker-danger">Excepción</span>
+                    <p class="node-text">Sigue en <em>"envío pendiente"</em>; reintento y alerta al personal.</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Conector vertical Sí hacia Resultado -->
+              <div class="flow-connector-v has-label" data-path="r3-path-c2-yes" aria-hidden="true">
+                <span class="branch-pill branch-pill-yes">Sí</span>
+                <span class="arrow-line"></span>
+                <span class="arrow-head">▼</span>
+              </div>
+
+              <!-- Paso 5: Resultado -->
+              <div class="flow-row flow-row-center">
+                <div class="flow-node flow-node-pill pill-orange" data-node="r3-res">
+                  <span class="node-kicker">Resultado</span>
+                  <p class="node-text">Se registra <strong>"recibido por cocina"</strong> (versión N).</p>
+                </div>
+              </div>
+
+            </div>
+          </article>
+
+
+          <!-- ==================== DIAGRAMA R4 (Acento turquesa) ==================== -->
+          <article id="diagrama-r4" class="diagram-card diagram-r4" tabindex="-1" aria-labelledby="r4-diagrama-titulo">
+            <header class="diagram-card-header">
+              <div class="diagram-card-meta">
+                <span class="tag tag-teal">Regla R4</span>
+                <h3 id="r4-diagrama-titulo" class="card-title">Pedido "listo" informado por cocina</h3>
+              </div>
+              <p class="diagram-card-desc">
+                Solo el aviso oficial de cocina sobre la versión vigente sin modificaciones pendientes cambia el estado a <em>listo</em>.
+              </p>
+
+              <!-- Controles de simulación R4 -->
+              <div class="diagram-controls" role="toolbar" aria-label="Controles de simulación R4">
+                <button type="button" class="btn btn-diagram btn-diagram-yes" data-diagram="r4" data-sim="yes" aria-pressed="false">
+                  <span class="btn-bullet" aria-hidden="true">✓</span> Simular camino Sí
+                </button>
+                <button type="button" class="btn btn-diagram btn-diagram-no" data-diagram="r4" data-sim="no" aria-pressed="false">
+                  <span class="btn-bullet" aria-hidden="true">✕</span> Simular camino No
+                </button>
+                <button type="button" class="btn btn-diagram btn-ghost" data-diagram="r4" data-sim="reset" aria-pressed="false">
+                  <span class="btn-bullet" aria-hidden="true">↺</span> Reiniciar
+                </button>
+              </div>
+
+              <!-- Barra de estado accesible y región aria-live -->
+              <div class="diagram-status" id="r4-status-bar" aria-hidden="true">
+                <span class="status-dot"></span>
+                <span class="status-msg">Selecciona una simulación para recorrer los pasos.</span>
+              </div>
+              <p id="r4-live" class="visually-hidden" aria-live="polite" aria-atomic="true"></p>
+            </header>
+
+            <!-- Lienzo del diagrama de flujo R4 -->
+            <div class="flow-canvas" id="canvas-r4" role="img" aria-label="Diagrama de flujo interactivo para la regla R4">
+
+              <!-- Paso 1: Entrada -->
+              <div class="flow-row flow-row-center">
+                <div class="flow-node flow-node-parallelogram" data-node="r4-in">
+                  <span class="node-kicker">Entrada</span>
+                  <p class="node-text">Aviso "listo" + versión informada + estado de modificaciones pendientes.</p>
+                </div>
+              </div>
+
+              <!-- Conector hacia Condición 1 -->
+              <div class="flow-connector-v" data-path="r4-path-1" aria-hidden="true">
+                <span class="arrow-line"></span>
+                <span class="arrow-head">▼</span>
+              </div>
+
+              <!-- Paso 2: Condición 1 con bifurcación Sí / No -->
+              <div class="flow-branch-row">
+                <!-- Tronco: Condición 1 -->
+                <div class="flow-node flow-node-diamond" data-node="r4-c1">
+                  <svg class="diamond-svg" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+                    <polygon points="50,3 97,50 50,97 3,50" />
+                  </svg>
+                  <div class="diamond-body">
+                    <span class="node-kicker">Condición 1</span>
+                    <p class="node-text">¿El aviso proviene de cocina?</p>
+                  </div>
+                </div>
+
+                <!-- Rama lateral No -->
+                <div class="flow-side-branch">
+                  <div class="flow-connector-h" data-path="r4-path-c1-no" aria-hidden="true">
+                    <span class="branch-pill branch-pill-no">No</span>
+                    <span class="arrow-line-h"></span>
+                    <span class="arrow-head-h">▶</span>
+                  </div>
+                  <div class="flow-node flow-node-alt" data-node="r4-c1-no">
+                    <span class="node-kicker kicker-danger">Excepción</span>
+                    <p class="node-text">Sin cambio de estado; el pasajero por sí solo no puede marcar <em>"listo"</em>.</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Conector vertical Sí hacia Condición 2 -->
+              <div class="flow-connector-v has-label" data-path="r4-path-c1-yes" aria-hidden="true">
+                <span class="branch-pill branch-pill-yes">Sí</span>
+                <span class="arrow-line"></span>
+                <span class="arrow-head">▼</span>
+              </div>
+
+              <!-- Paso 3: Condición 2 con bifurcación Sí / No -->
+              <div class="flow-branch-row">
+                <!-- Tronco: Condición 2 -->
+                <div class="flow-node flow-node-diamond" data-node="r4-c2">
+                  <svg class="diamond-svg" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+                    <polygon points="50,3 97,50 50,97 3,50" />
+                  </svg>
+                  <div class="diamond-body">
+                    <span class="node-kicker">Condición 2</span>
+                    <p class="node-text">¿Es la versión vigente y sin modificaciones pendientes?</p>
+                  </div>
+                </div>
+
+                <!-- Rama lateral No -->
+                <div class="flow-side-branch">
+                  <div class="flow-connector-h" data-path="r4-path-c2-no" aria-hidden="true">
+                    <span class="branch-pill branch-pill-no">No</span>
+                    <span class="arrow-line-h"></span>
+                    <span class="arrow-head-h">▶</span>
+                  </div>
+                  <div class="flow-node flow-node-alt" data-node="r4-c2-no">
+                    <span class="node-kicker kicker-danger">Excepción</span>
+                    <p class="node-text">Se mantiene el estado; cocina debe procesar la versión actualizada.</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Conector vertical Sí hacia Acción -->
+              <div class="flow-connector-v has-label" data-path="r4-path-c2-yes" aria-hidden="true">
+                <span class="branch-pill branch-pill-yes">Sí</span>
+                <span class="arrow-line"></span>
+                <span class="arrow-head">▼</span>
+              </div>
+
+              <!-- Paso 4: Acción -->
+              <div class="flow-row flow-row-center">
+                <div class="flow-node flow-node-rect" data-node="r4-act">
+                  <span class="node-kicker kicker-teal">Acción</span>
+                  <p class="node-text">El sistema cambia el estado a <strong>"listo"</strong>.</p>
+                </div>
+              </div>
+
+              <!-- Conector hacia Resultado -->
+              <div class="flow-connector-v" data-path="r4-path-2" aria-hidden="true">
+                <span class="arrow-line"></span>
+                <span class="arrow-head">▼</span>
+              </div>
+
+              <!-- Paso 5: Resultado -->
+              <div class="flow-row flow-row-center">
+                <div class="flow-node flow-node-pill pill-teal" data-node="r4-res">
+                  <span class="node-kicker">Resultado</span>
+                  <p class="node-text">Se notifica a pasajero y personal para entrega en camarote o comedor.</p>
+                </div>
+              </div>
+
+            </div>
+          </article>
+
         </div>
       </div>
     </section>
