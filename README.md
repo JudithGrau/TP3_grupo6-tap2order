@@ -56,9 +56,6 @@
 | **Matías Jara** | Etapa 3 | Maquetado e implementación de los diagramas de flujo interactivos para R3 y R4 en `index.html` y `style.css` (leyenda de formas, nodos y conectores SVG), desarrollo de la lógica de simulación en `script.js` (caminos "Sí", "No" y "Reiniciar"), accesibilidad mediante `aria-pressed`, regiones `aria-live` y adaptación a `prefers-reduced-motion`, y verificación de layout en desktop. |
 | **Mauro Flores** | Etapa 4 | Elaboración y estructuración técnica de la documentación final en `README.md`, despliegue de la landing page en la plataforma Vercel y auditoría funcional en ventana de navegación de incógnito. |
 
-### Revisión colaborativa
-- **Observación entre compañeros y mejora aplicada:** [PENDIENTE: Completar quién observó qué detalle y qué instrucción se dio a la herramienta de IA para corregirlo]
-
 ---
 
 ## 4. Herramientas de IA
@@ -67,15 +64,12 @@
 | :--- | :--- | :--- | :--- |
 | **Judith Grau** (Etapa 1) | Antigravity | Gemini 3.8 Flash (Medium) | Generación de la estructura semántica base en HTML5, definición de variables CSS para la paleta institucional y diseño del mecanismo de fallback para el logotipo oficial. |
 | **Lucas Luccaroni** (Etapa 2) | Antigravity | Gemini 3.8 Flash (Medium) | Redacción técnica de las propuestas R3/R4, segregación entre especificación de la regla y aportes de diseño, y estructuración de los grupos de datos en `<details>`. |
-| **Matías Jara** (Etapa 3) | Antigravity | Gemini 3.8 Flash (Medium) | Modelado de nodos y conectores de los diagramas de flujo en CSS/SVG, programación de la simulación paso a paso en JavaScript y soporte para movimiento reducido. |
-| **Mauro Flores** (Etapa 4) | Antigravity | Gemini 3.8 Flash (Medium) | Redacción técnica del archivo `README.md` alineada estrictamente al código fuente comprobable, configuración del entorno de despliegue y checklist de verificación. |
+| **Matías Jara** (Etapa 3) | Antigravity | Gemini 3.8 Flash (Medium) | Modelado de nodos y conectores de los diagramas de flujo en rombos con SVG inline y conectores en HTML/CSS, programación de la simulación paso a paso en JavaScript y soporte para movimiento reducido. |
+| **Mauro Flores** (Etapa 4) | Antigravity | Gemini 3.8 Flash (Medium) | Redacción técnica del archivo `README.md` alineada estrictamente al código fuente comprobable y checklist de verificación. |
 
-*Otras herramientas utilizadas por los integrantes:* [PENDIENTE: Indicar si algún integrante utilizó otra herramienta o consignar "Ninguna"].
+*Otras herramientas utilizadas por los integrantes:* 
 
-### Evidencia de iteración
-- **Instrucción inicial:** [PENDIENTE: Detallar el prompt o instrucción inicial ingresada]
-- **Problema detectado en desktop:** [PENDIENTE: Detallar qué defecto o limitación visual/técnica se observó en desktop]
-- **Pedido de mejora y qué cambió:** [PENDIENTE: Detallar la instrucción de ajuste y el cambio exacto aplicado en el código]
+| **Mauro Flores** | Claude Sonet 5.5 Medium | Gemini 4 Hydrogen |
 
 ---
 
