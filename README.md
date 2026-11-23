@@ -126,3 +126,7 @@ Abrir directamente el archivo `index.html` en cualquier navegador web moderno o 
 
 ## 6. Enlaces públicos
 - **Repositorio:** https://github.com/JudithGrau/TP3_grupo6-tap2order
+- **Landing page en Vercel:**  https://grupo6-tap2order.vercel.app
+- **Comprobación en modo incógnito:** El repositorio y la landing page fueron comprobados en una ventana de navegación sin sesión (modo incógnito), verificando:
+  - Prueba de botones.
+  - Prueba de funcionamiento de diagramas (caminos Sí / No).
